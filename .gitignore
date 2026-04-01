@@ -1,6 +1,8 @@
 .venv/
 .vercel/
 node_modules/
+.env
+.env.local
 
 # OS/editor
 .DS_Store
