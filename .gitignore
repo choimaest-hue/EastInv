@@ -16,3 +16,5 @@ extracted_text_utf8.txt
 # Source office files not needed for deploy
 TalkFile_business plan.docx
 TalkFile_business plan.zip
+.vercel
+.env*.local
