@@ -1,0 +1,12 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clipRounded">
+      <rect x="2" y="2" width="60" height="60" rx="14" />
+    </clipPath>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="#0B2734" />
+  <g clip-path="url(#clipRounded)">
+    <image href="logo-cutout.png" x="2" y="2" width="188" height="60" preserveAspectRatio="xMinYMid slice" />
+  </g>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="none" stroke="#E1BE6A" stroke-width="2" />
+</svg>

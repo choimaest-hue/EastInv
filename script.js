@@ -457,7 +457,7 @@ function injectFloatingActions() {
   wrap.className = "floating-actions";
 
   const switchBtn = document.createElement("a");
-  switchBtn.className = "floating-btn";
+  switchBtn.className = "floating-btn floating-btn-switch";
   switchBtn.href = switchHref;
   switchBtn.setAttribute("data-i18n", isMobile ? "desktop_view" : "mobile_view");
   wrap.appendChild(switchBtn);
