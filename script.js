@@ -50,6 +50,10 @@ const translations = {
     qna_method_phone: "电话咨询",
     qna_method_email: "邮件咨询",
     qna_go: "立即联系",
+    qna_status_sending: "正在连接，请稍候。",
+    qna_status_ready_phone: "已记录咨询，正在打开拨号。",
+    qna_status_ready_email: "已记录咨询，正在打开邮件。",
+    qna_status_failed: "已继续打开联系方式，记录保存未完成。",
 
     company_title: "公司介绍",
     company_sub: "East Investment Holdings Ltd",
@@ -176,6 +180,10 @@ const translations = {
     qna_method_phone: "전화 문의",
     qna_method_email: "이메일 문의",
     qna_go: "문의하기",
+    qna_status_sending: "연결 중입니다. 잠시만 기다려 주세요.",
+    qna_status_ready_phone: "문의 기록 후 전화 연결을 엽니다.",
+    qna_status_ready_email: "문의 기록 후 이메일 연결을 엽니다.",
+    qna_status_failed: "연결은 계속 진행되며 기록 저장만 실패했습니다.",
 
     company_title: "회사 소개",
     company_sub: "East Investment Holdings Ltd",
@@ -302,6 +310,10 @@ const translations = {
     qna_method_phone: "Phone",
     qna_method_email: "Email",
     qna_go: "Contact Now",
+    qna_status_sending: "Connecting. Please wait.",
+    qna_status_ready_phone: "Inquiry logged. Opening the dialer.",
+    qna_status_ready_email: "Inquiry logged. Opening email.",
+    qna_status_failed: "Contact will still open, but inquiry logging failed.",
 
     company_title: "Company Overview",
     company_sub: "East Investment Holdings Ltd",
@@ -464,6 +476,7 @@ function injectFloatingActions() {
 function initQnaContact() {
   const role = document.getElementById("qna-role");
   const go = document.getElementById("qna-go");
+  const status = document.getElementById("qna-status");
   if (!role || !go) return;
 
   const contacts = {
@@ -473,12 +486,60 @@ function initQnaContact() {
     planner: { name: "Cozy Tsui", phone: "+6492651356", email: "cozy@topland.co.nz" }
   };
 
-  go.addEventListener("click", () => {
+  function setStatus(key, tone) {
+    if (!status) return;
+    const lang = localStorage.getItem("site-lang") || "zh";
+    const dict = translations[lang] || translations.zh;
+    status.textContent = dict[key] || "";
+    status.classList.remove("is-error", "is-success");
+    if (tone) {
+      status.classList.add(tone);
+    }
+  }
+
+  function logInquiry(payload) {
+    const body = JSON.stringify(payload);
+
+    if (navigator.sendBeacon) {
+      const blob = new Blob([body], { type: "application/json" });
+      const sent = navigator.sendBeacon("/api/qna-contact", blob);
+      return Promise.resolve(sent);
+    }
+
+    return fetch("/api/qna-contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body,
+      keepalive: true
+    }).then((response) => response.ok);
+  }
+
+  go.addEventListener("click", async () => {
     const selectedRole = role.value;
     const methodNode = document.querySelector("input[name='qna-method']:checked");
     const method = methodNode ? methodNode.value : "phone";
     const target = contacts[selectedRole];
     if (!target) return;
+
+    setStatus("qna_status_sending");
+
+    const payload = {
+      role: selectedRole,
+      method,
+      language: localStorage.getItem("site-lang") || "zh",
+      page: document.body.getAttribute("data-page") || "qna"
+    };
+
+    try {
+      const ok = await logInquiry(payload);
+      if (ok) {
+        setStatus(method === "phone" ? "qna_status_ready_phone" : "qna_status_ready_email", "is-success");
+      } else {
+        setStatus("qna_status_failed", "is-error");
+      }
+    } catch {
+      setStatus("qna_status_failed", "is-error");
+    }
 
     if (method === "phone") {
       window.location.href = `tel:${target.phone}`;

@@ -25,13 +25,15 @@ git push -u origin main
 
 ## 4) Supabase 프로젝트 생성
 1. Supabase Dashboard > New project
-2. 프로젝트 생성 후 `Project URL`, `anon public key` 확인
-3. 필요한 경우 아래 환경변수 사용
+2. 프로젝트 생성 후 `Project URL`, `anon public key`, `service_role key` 확인
+3. SQL Editor에서 [supabase/inquiry_logs.sql](supabase/inquiry_logs.sql) 내용을 실행해 `inquiry_logs` 테이블 생성
+4. 이 사이트는 브라우저에서 직접 DB에 쓰지 않고, Vercel Serverless API가 대신 기록합니다.
 
 ## 5) Vercel 환경변수 설정
 Vercel Project > Settings > Environment Variables
 - `SUPABASE_URL` = your project URL
 - `SUPABASE_ANON_KEY` = your anon key
+- `SUPABASE_SERVICE_ROLE_KEY` = your service role key
 
 적용 후 Redeploy
 
@@ -48,3 +50,5 @@ Vercel Project > Settings > Domains에서 커스텀 도메인 추가
 ## Notes
 - 현재 사이트는 정적 HTML/CSS/JS라서 빌드 단계 없이 바로 배포됩니다.
 - 모바일 페이지는 `m.index.html` 등으로 직접 접근 가능합니다.
+- 문의/연락 페이지는 `/api/qna-contact`를 통해 Supabase `inquiry_logs` 테이블에 접속 로그를 저장합니다.
+- `SUPABASE_SERVICE_ROLE_KEY`는 반드시 Vercel 서버 환경변수에만 넣고, 프론트엔드 코드에는 넣지 않습니다.

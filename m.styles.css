@@ -269,6 +269,21 @@ body {
   flex-wrap: wrap;
 }
 
+.qna-status {
+  min-height: 1.4em;
+  margin: 2px 0 0;
+  color: #56717f;
+  font-size: 0.9rem;
+}
+
+.qna-status.is-error {
+  color: #9d3b2f;
+}
+
+.qna-status.is-success {
+  color: #1f6a49;
+}
+
 ul,
 ol {
   margin: 8px 0 0;
