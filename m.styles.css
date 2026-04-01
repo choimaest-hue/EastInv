@@ -1,0 +1,276 @@
+:root {
+  --bg: #f2f5f8;
+  --ink: #0f2c3a;
+  --card: #ffffff;
+  --line: #d9e2ea;
+  --accent: #d2a63e;
+  --deep: #061b3a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Noto Sans SC", "Noto Sans KR", sans-serif;
+  background: linear-gradient(180deg, #f7f9fb, #edf2f7);
+  color: var(--ink);
+}
+
+.m-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 14px;
+  background: #081d39;
+}
+
+.m-logo {
+  width: 150px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.m-header-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.lang-btn,
+.web-btn {
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  color: #e6edf1;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  min-height: 40px;
+}
+
+.lang-btn.active {
+  background: rgba(212, 169, 72, 0.16);
+  border-color: rgba(212, 169, 72, 0.8);
+  color: #fff2ce;
+}
+
+.m-main {
+  padding: 8px 14px calc(120px + env(safe-area-inset-bottom));
+  display: grid;
+  gap: 0;
+}
+
+.m-hero,
+.m-card,
+.m-grid article {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 18px 0;
+  box-shadow: none;
+  border-bottom: 1px solid var(--line);
+}
+
+.m-hero {
+  background: linear-gradient(135deg, #061b3a 0%, #0e2f57 100%);
+  color: #f4f7f8;
+  border-bottom: 0;
+  margin: 10px 0 8px;
+  padding: 24px 14px;
+  border-radius: 12px;
+}
+
+.m-eyebrow {
+  margin: 0 0 6px;
+  color: #f1cc76;
+  font-weight: 700;
+}
+
+.m-hero h1 {
+  margin: 0 0 8px;
+  font-family: "Noto Serif SC", serif;
+  font-size: 1.7rem;
+  line-height: 1.3;
+}
+
+.m-card h2,
+.m-grid h3 {
+  margin: 0 0 8px;
+  color: var(--deep);
+}
+
+.m-card p,
+.m-card li,
+.m-hero p,
+.m-grid p {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.m-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.m-grid article p {
+  margin: 0;
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--deep);
+}
+
+.m-grid article {
+  border-bottom: 0;
+  border-left: 1px solid #d8e1e8;
+  padding: 6px 10px;
+}
+
+.m-grid article:first-child,
+.m-grid article:nth-child(3) {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.m-image {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+  height: auto;
+  object-fit: contain;
+}
+
+.m-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  gap: 12px;
+  padding: 10px 14px calc(12px + env(safe-area-inset-bottom));
+  background: rgba(8, 29, 57, 0.98);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.m-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.m-nav a {
+  text-decoration: none;
+  text-align: center;
+  color: #dce8ee;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  padding: 9px 2px;
+  font-size: 0.79rem;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+  flex: 0 0 auto;
+  min-width: 68px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.m-nav a.active {
+  background: transparent;
+  border-color: rgba(212, 169, 72, 0.9);
+  color: #fff2ce;
+}
+
+.floating-actions {
+  position: fixed;
+  right: 10px;
+  bottom: 76px;
+  z-index: 140;
+  display: grid;
+  gap: 8px;
+}
+
+.floating-btn {
+  text-decoration: none;
+  padding: 9px 12px;
+  border-radius: 999px;
+  background: rgba(6, 27, 58, 0.96);
+  color: #f6f9fb;
+  border: 1px solid rgba(212, 169, 72, 0.58);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-align: center;
+  min-width: 84px;
+}
+
+.m-nav a:focus-visible,
+.lang-btn:focus-visible,
+.floating-btn:focus-visible {
+  outline: 2px solid rgba(212, 169, 72, 0.95);
+  outline-offset: 2px;
+}
+
+@media (max-width: 420px) {
+  .m-main {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .m-nav {
+    gap: 10px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .m-nav a {
+    font-size: 0.75rem;
+    min-width: 62px;
+  }
+}
+
+.floating-btn-qna {
+  background: rgba(13, 42, 74, 0.96);
+}
+
+.qna-panel {
+  display: grid;
+  gap: 10px;
+}
+
+.qna-input {
+  padding: 10px 12px;
+  border: 1px solid #cfdbe4;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 0.95rem;
+}
+
+.qna-label {
+  margin: 0;
+  font-weight: 700;
+}
+
+.qna-methods {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+ul,
+ol {
+  margin: 8px 0 0;
+  padding-left: 1.2rem;
+}

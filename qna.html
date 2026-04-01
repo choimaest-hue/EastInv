@@ -1,0 +1,65 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>East Investment Holdings Ltd | QnA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="qna">
+  <header class="site-header">
+    <div class="header-row">
+      <a class="brand" href="index.html"><img class="brand-logo" src="assets/logo-cutout.png" alt="EAST Investment Holdings Limited logo" /></a>
+            <div class="lang-switch" role="group" aria-label="language switch">
+        <button class="lang-btn" data-target="zh">中文</button>
+        <button class="lang-btn" data-target="ko">한국어</button>
+        <button class="lang-btn" data-target="en">English</button>
+      </div>
+    </div>
+      <nav class="main-nav">
+      <a data-nav="home" href="index.html"></a>
+      <a data-nav="company" href="company.html"></a>
+      <a data-nav="business" href="business.html"></a>
+      <a data-nav="investment" href="investment.html"></a>
+      <a data-nav="certification" href="certification.html"></a>
+      <a data-nav="roadmap" href="roadmap.html"></a>
+      <a data-nav="qna" href="qna.html"></a>
+    </nav>  </header>
+
+  <main>
+    <section class="hero reveal">
+      <p class="eyebrow">QnA</p>
+      <h1 data-i18n="qna_title"></h1>
+      <p class="sub" data-i18n="qna_sub"></p>
+    </section>
+
+    <section class="panel reveal qna-panel">
+      <label for="qna-role" data-i18n="qna_role_label"></label>
+      <select id="qna-role" class="qna-input">
+        <option value="lawyer" data-i18n="qna_role_lawyer"></option>
+        <option value="accountant" data-i18n="qna_role_accountant"></option>
+        <option value="adviser" data-i18n="qna_role_adviser"></option>
+        <option value="planner" data-i18n="qna_role_planner"></option>
+      </select>
+
+      <p class="qna-label" data-i18n="qna_method_label"></p>
+      <div class="qna-methods">
+        <label><input type="radio" name="qna-method" value="phone" checked /> <span data-i18n="qna_method_phone"></span></label>
+        <label><input type="radio" name="qna-method" value="email" /> <span data-i18n="qna_method_email"></span></label>
+      </div>
+
+      <button id="qna-go" class="action-btn" type="button" data-i18n="qna_go"></button>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-bottom footer-only-logo"><img class="footer-logo" src="assets/logo-cutout.png" alt="EAST Investment Holdings Limited logo" /></div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
